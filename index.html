@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Day</title>
+    <style>
+        div {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 46px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="counter">86.400</div>
+    <script>
+        function updateCountDown() {
+            const now = new Date();
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const secondsRemaining = Math.floor((endOfDay - now) / 1000);
+
+            document.getElementById('counter').innerText = secondsRemaining;
+        }
+
+        updateCountDown();
+        const countDownInterval = setInterval(updateCountDown, 1000);
+    </script>
+</body>
+</html>
