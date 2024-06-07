@@ -5,21 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Day</title>
     <style>
-        div {
+        body {
+            background-color: rgb(24, 24, 24);
+        }
+
+        #counter {
             display: flex;
             justify-content: center;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             font-size: 62px;
             text-align: center;
             height: 80vh;
+            color: white;
             align-items: center;
+        }
+        
+        #toggle {
+            width: 100%;
+            text-align: right;
+        }
+
+        button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 42px;
+            cursor: pointer;
         }
 
     </style>
 </head>
 <body>
-    <div id="counter">86.400</div>
+    <div>
+        <div id="toggle">
+            <button id="button">#</button>
+        </div>
+        
+        <div id="counter">86.400</div>
+    </div>
+    
     <script>
+        document.querySelector('button').addEventListener('click', function() {
+            const bodyElement = document.querySelector('body'); 
+            const currentColor = bodyElement.style.backgroundColor;
+            const counterElement = document.getElementById('counter');
+            const toggleElement = document.getElementById('button');
+
+            if (currentColor == 'white' || currentColor == '') {
+                bodyElement.style.backgroundColor = '#181818';
+                counterElement.style.color = 'white';
+                toggleElement.style.color = 'white';
+            } else {
+                bodyElement.style.backgroundColor = 'white';
+                counterElement.style.color = '#181818';
+                toggleElement.style.color = '#181818';
+            }
+            
+        })
+
         function updateCountDown() {
             const now = new Date();
             const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
