@@ -15,7 +15,7 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             font-size: 62px;
             text-align: center;
-            height: 5vh;
+            height: 70vh;
             color: #181818;
             align-items: center;
         }
@@ -33,17 +33,6 @@
             cursor: pointer;
         }
 
-        #heading {
-            display: flex;
-            justify-content: center;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 26px;
-            text-align: center;
-            height: 20vh;
-            color: #181818;
-            align-items: center;
-        }
-
     </style>
 </head>
 <body>
@@ -51,7 +40,7 @@
         <div id="toggle">
             <button id="button">#</button>
         </div>
-        <div id="heading">Time Until Training &#128170;</div>
+        
         <div id="counter">86.400</div>
     </div>
     
@@ -61,26 +50,23 @@
             const currentColor = bodyElement.style.backgroundColor;
             const counterElement = document.getElementById('counter');
             const toggleElement = document.getElementById('button');
-            const heading = document.getElementById('heading');
 
             if (currentColor == 'white' || currentColor == '') {
                 bodyElement.style.backgroundColor = '#181818';
                 counterElement.style.color = 'white';
                 toggleElement.style.color = 'white';
-                heading.style.color = 'white';
             } else {
                 bodyElement.style.backgroundColor = 'white';
                 counterElement.style.color = '#181818';
                 toggleElement.style.color = '#181818';
-                heading.style.color = '#181818';
             }
             
         })
 
         function updateCountDown() {
             const now = new Date();
-            const secondsUntilTraining = new Date("Jun 28, 2024 19:30:00").getTime()
-            const secondsRemaining = Math.floor((secondsUntilTraining - now) / 1000);
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const secondsRemaining = Math.floor((endOfDay - now) / 1000);
 
             document.getElementById('counter').innerText = secondsRemaining;
         }
